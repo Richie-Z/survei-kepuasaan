@@ -12,6 +12,12 @@ class QuestionRepository
     ) {
     }
 
+
+    public function getQuestion(mixed $questionId): ?Question
+    {
+        return $this->model->findOrFail($questionId);
+    }
+
     public function getQuestions(): Collection
     {
         return $this->model->all();
