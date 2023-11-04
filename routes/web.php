@@ -17,9 +17,15 @@ Route::get('/', LandingIndex::class)->name('home');
 
 
 Route::prefix('admin')->group(function () {
-    Route::get('login', Login::class)->name('login');
+    Route::get('login', Login::class)->name('login')->middleware('guest');
     Route::middleware('auth')->group(function () {
         Route::get('', Dashboard::class)->name('dashboard');
+
+        Route::get('logout', function () {
+            auth()->logout();
+            return redirect(route('login'));
+        })->name('logout');
+
         Route::prefix('question')->name('question.')->group(function () {
             Route::get('', QuestionIndex::class)->name('index');
             Route::get('form/{questionId?}', QuestionForm::class)->name('form');
