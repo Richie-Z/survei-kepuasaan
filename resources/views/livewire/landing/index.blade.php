@@ -15,7 +15,7 @@
                         aria-selected="false">Pertanyaan</button>
                 </li>
             </ul>
-            <form class="tab-content" id="myTabContent">
+            <form class="tab-content" id="myTabContent" wire:submit="save" method="POST">
                 <div class="tab-pane fade show active" id="home-tab-pane" role="tabpanel" aria-labelledby="home-tab"
                     tabindex="0" x-data="{ job: '' }">
                     <div class="form-group mb-3">
@@ -29,13 +29,14 @@
                     <div class="form-group mb-3">
                         <b>Jenis Kelamin:</b>
                         <select wire:model="gender" id="" class="form-select">
+                            <option value="" disabled="" selected="">Pilih Jenis Kelamin Anda...</option>
                             <option value="male">Laki-Laki</option>
                             <option value="female">Perempuan</option>
                         </select>
                     </div>
                     <div class="form-group mb-3">
                         <b>Usia Anda:</b>
-                        <select id="usia" wire:model="ageId" class="form-select" required="">
+                        <select id="usia" wire:model="ageId" class="form-select">
                             <option value="" disabled="" selected="">Pilih Usia Anda...</option>
                             @foreach ($ageDatas as $data)
                                 <option value="{{ $data->id }}">{{ $data->name }}</option>
@@ -44,7 +45,7 @@
                     </div>
                     <div class="form-group mb-3">
                         <b>Pendidikan:</b>
-                        <select id="pendidikan" wire:model="educationId" class="form-select" required="">
+                        <select id="pendidikan" wire:model="educationId" class="form-select">
                             <option value="" disabled="" selected="">Pilih Pendidikan Terakhir
                                 Anda...</option>
                             @foreach ($educationDatas as $data)
@@ -54,7 +55,7 @@
                     </div>
                     <div class="form-group mb-3">
                         <b>Pekerjaan:</b>
-                        <select id="pendidikan" wire:model="job" x-model="job" class="form-select" required="">
+                        <select id="pendidikan" wire:model="job" x-model="job" class="form-select">
                             <option value="" disabled="" selected="">Pilih Pekerjaan Anda...
                             </option>
                             @foreach ($jobDatas as $data)
@@ -70,7 +71,7 @@
                     </div>
                     <div class="form-group ">
                         <b>Jenis Layanan:</b>
-                        <select id="pendidikan" wire:model="serviceTypeId" class="form-select" required="">
+                        <select id="pendidikan" wire:model="serviceTypeId" class="form-select">
                             <option value="" disabled="" selected="">Pilih Jenis Layanan...
                             </option>
                             @foreach ($serviceTypeDatas as $data)
@@ -85,40 +86,44 @@
                         <div class="form-group mb-3">
                             <p>{{ $key + 1 . '. ' . $data->name }}</p>
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="exampleRadios"
-                                    id="exampleRadios1" value="option1" checked>
+                                <input class="form-check-input" type="radio" name="radio[{{ $key }}]"
+                                    value="Tidak Sesuai" wire:model="answers.{{ $key }}.answer" required>
                                 <label class="form-check-label" for="exampleRadios1">
                                     Tidak Sesuai
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="exampleRadios"
-                                    id="exampleRadios2" value="option2">
+                                <input class="form-check-input" type="radio" name="radio[{{ $key }}]"
+                                    value="Kurang Sesuai" wire:model="answers.{{ $key }}.answer" required>
                                 <label class="form-check-label" for="exampleRadios2">
                                     Kurang Sesuai
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="exampleRadios"
-                                    id="exampleRadios2" value="option2">
+                                <input class="form-check-input" type="radio" name="radio[{{ $key }}]"
+                                    value="Sesuai" wire:model="answers.{{ $key }}.answer" required>
                                 <label class="form-check-label" for="exampleRadios2">
                                     Sesuai
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="exampleRadios"
-                                    id="exampleRadios2" value="option2">
+                                <input class="form-check-input" type="radio" name="radio[{{ $key }}]"
+                                    value="Sangat Sesuai" wire:model="answers.{{ $key }}.answer" required>
                                 <label class="form-check-label" for="exampleRadios2">
                                     Sangat Sesuai
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="exampleRadios"
-                                    id="exampleRadios2" value="lainnya">
-                                <input type="text" placeholder="Lainnya">
+                                <input class="form-check-input" type="radio" name="radio[{{ $key }}]"
+                                    value="lainnya" required>
+                                <input type="text" placeholder="Lainnya"
+                                    wire:model="answers.{{ $key }}.answer">
                             </div>
                         </div>
                     @endforeach
+                    <div class="form-group">
+                        <button class="btn btn-primary">Submit</button>
+                    </div>
                 </div>
             </form>
         </div>

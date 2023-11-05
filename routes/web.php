@@ -15,12 +15,10 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', LandingIndex::class)->name('home');
 
-
 Route::prefix('admin')->group(function () {
     Route::get('login', Login::class)->name('login')->middleware('guest');
     Route::middleware('auth')->group(function () {
         Route::get('', Dashboard::class)->name('dashboard');
-
         Route::get('logout', function () {
             auth()->logout();
             return redirect(route('login'));
