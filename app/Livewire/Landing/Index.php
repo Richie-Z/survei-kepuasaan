@@ -82,7 +82,7 @@ class Index extends Component
         ]);
 
         if ($validator->fails())
-            return $this->dispatch('showError', json_encode($validator->errors()));
+            return $this->dispatch('showError', $validator->errors());
 
         DB::beginTransaction();
         try {

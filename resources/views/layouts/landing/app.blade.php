@@ -24,9 +24,10 @@
     <script>
         document.addEventListener("DOMContentLoaded", () => {
             Livewire.on('showError', (error) => {
+                const errorMessages = Object.values(error[0]).flatMap(errorArray => errorArray).join("; ");
                 iziToast.error({
                     title: 'Gagal',
-                    message: error,
+                    message: errorMessages,
                     position: 'topRight'
                 });
             })
