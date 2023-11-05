@@ -34,12 +34,29 @@
             </div>
         </div>
     </div>
+
+
+    <!-- Question Chart -->
+    <div class="row">
+        @foreach ($questions as $key => $question)
+            <div class="col-12 col-md-6 col-lg-6">
+                <div class="card">
+                    <div class="card-header">
+                        <h4>{{ $question->name }}</h4>
+                    </div>
+                    <div class="card-body">
+                        <canvas id="question-{{ $key }}"></canvas>
+                    </div>
+                </div>
+            </div>
+        @endforeach
+    </div>
+    <!-- respondentPerBulanChart Script -->
     <script>
         const monthLabel = ["January", "February", "March", "April", "May", "June", "July", "August",
             "September",
             "October", "November", "December"
         ]
-
         let respondentPerBulanChart;
 
         function initRespondentPerBulanChart(data) {
@@ -63,14 +80,62 @@
                 },
             });
         }
+    </script>
+
+    <!-- Question Chart -->
+    <script>
+        let charts = []
+
+        function initPieChart(key, data, title) {
+            var ctx = document.getElementById(`question-${key}`).getContext('2d');
+            let tempChart = new Chart(ctx, {
+                type: 'pie',
+                data: {
+                    datasets: [{
+                        data: Object.values(data),
+                        backgroundColor: [
+                            '#191d21',
+                            '#fc544b',
+                            '#6777ef',
+                            '#63ed7a',
+                            '#ffa426',
+                        ],
+                        label: title
+                    }],
+                    labels: Object.keys(data),
+                },
+                options: {
+                    responsive: true,
+                    legend: {
+                        position: 'bottom',
+                    },
+                }
+            });
+            charts.push(
+                tempChart
+            )
+        }
+    </script>
+
+    <script>
         document.addEventListener('livewire:initialized', () => {
             initRespondentPerBulanChart(@json($this->getMontlyRespondent));
+            @foreach ($questions as $key => $question)
+
+                initPieChart({{ $key }}, @json($this->getQuestionData[$key]), "{{ $question->name }}")
+            @endforeach
         })
         document.addEventListener("DOMContentLoaded", () => {
             Livewire.on('filter-update', (data) => {
                 setTimeout(() => {
                     respondentPerBulanChart.destroy();
                     initRespondentPerBulanChart(data[0]);
+                    @foreach ($questions as $key => $question)
+
+                        charts[{{ $key }}].destroy()
+                        initPieChart({{ $key }}, data[1][{{ $key }}],
+                            "{{ $question->name }}")
+                    @endforeach
                 }, 0)
             })
         });
