@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 /**
  * @mixin \Illuminate\Database\Eloquent\Builder
@@ -18,4 +19,9 @@ class Respondent extends Model
         'job',
         'service_type_id',
     ];
+
+    public function answers(): HasMany
+    {
+        return $this->hasMany(RespondentAnswer::class);
+    }
 }
