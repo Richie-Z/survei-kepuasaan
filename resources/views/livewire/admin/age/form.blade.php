@@ -5,7 +5,7 @@
         </div>
         <form class="card-body" method="POST" wire:submit="save">
             <div class="form-group">
-                <label>Pertanyaan</label>
+                <label>Umur</label>
                 <input type="text" class="form-control" wire:model="name">
             </div>
             <div class="form-group">

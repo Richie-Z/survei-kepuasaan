@@ -12,6 +12,11 @@ class AgeRepository
     ) {
     }
 
+    public function getAge(mixed $ageId): ?Age
+    {
+        return $this->age->findOrFail($ageId);
+    }
+
     public function getAges(): Collection
     {
         return $this->age->all();

@@ -15,14 +15,14 @@ class SidebarMenu extends Component
         $this->items = [
             'Dashboard' => [
                 new Item('Dashboard', 'dashboard', 'fas fa-fire'),
-                new Item('Respons', 'dashboard', 'fas fa-fire'),
+                new Item('Respons', 'dashboard', 'fas fa-users'),
             ],
             'Master' => [
-                new Item('Pertanyaan', 'question.index', 'fas fa-fire'),
-                new Item('Umur', 'dashboard', 'fas fa-fire'),
-                new Item('Pendidikan', 'dashboard', 'fas fa-fire'),
-                new Item('Pekerjaan', 'dashboard', 'fas fa-fire'),
-                new Item('Jenis Pelayanan', 'dashboard', 'fas fa-fire'),
+                new Item('Pertanyaan', 'question.index', 'fas fa-question'),
+                new Item('Umur', 'age.index', 'fas fa-user'),
+                new Item('Pendidikan', 'dashboard', 'fas fa-graduation-cap'),
+                new Item('Pekerjaan', 'dashboard', 'fas fa-briefcase'),
+                new Item('Jenis Pelayanan', 'dashboard', 'fas fa-hospital'),
             ]
         ];
     }
