@@ -1,8 +1,8 @@
 <?php
 
-use App\Livewire\Admin\Dashboard;
 use App\Livewire\Landing\Index as LandingIndex;
 
+use App\Livewire\Admin\Dashboard;
 use App\Livewire\Admin\Login;
 use App\Livewire\Admin\Question\Index as QuestionIndex;
 use App\Livewire\Admin\Question\Form as QuestionForm;
