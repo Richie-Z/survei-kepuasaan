@@ -20,7 +20,7 @@ class SidebarMenu extends Component
             'Master' => [
                 new Item('Pertanyaan', 'question.index', 'fas fa-question'),
                 new Item('Umur', 'age.index', 'fas fa-user'),
-                new Item('Pendidikan', 'dashboard', 'fas fa-graduation-cap'),
+                new Item('Pendidikan', 'education.index', 'fas fa-graduation-cap'),
                 new Item('Pekerjaan', 'dashboard', 'fas fa-briefcase'),
                 new Item('Jenis Pelayanan', 'dashboard', 'fas fa-hospital'),
             ]

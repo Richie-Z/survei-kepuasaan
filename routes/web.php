@@ -8,6 +8,8 @@ use App\Livewire\Admin\Question\Index as QuestionIndex;
 use App\Livewire\Admin\Question\Form as QuestionForm;
 use App\Livewire\Admin\Age\Index as AgeIndex;
 use App\Livewire\Admin\Age\Form as AgeForm;
+use App\Livewire\Admin\Education\Index as EducationIndex;
+use App\Livewire\Admin\Education\Form as EducationForm;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -35,6 +37,11 @@ Route::prefix('admin')->group(function () {
         Route::prefix('age')->name('age.')->group(function () {
             Route::get('', AgeIndex::class)->name('index');
             Route::get('form/{ageId?}', AgeForm::class)->name('form');
+        });
+
+        Route::prefix('education')->name('education.')->group(function () {
+            Route::get('', EducationIndex::class)->name('index');
+            Route::get('form/{educationId?}', EducationForm::class)->name('form');
         });
     });
 });

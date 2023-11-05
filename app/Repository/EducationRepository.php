@@ -12,6 +12,11 @@ class EducationRepository
     ) {
     }
 
+    public function getEducation(mixed $educationId): ?Education
+    {
+        return $this->model->findOrFail($educationId);
+    }
+
     public function getEducations(): Collection
     {
         return $this->model->all();
