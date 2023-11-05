@@ -4,6 +4,8 @@ use App\Livewire\Landing\Index as LandingIndex;
 
 use App\Livewire\Admin\Dashboard;
 use App\Livewire\Admin\Login;
+use App\Livewire\Admin\Respondent\Index as RespondentIndex;
+use App\Livewire\Admin\Respondent\Detail as RespondentDetail;
 use App\Livewire\Admin\Question\Index as QuestionIndex;
 use App\Livewire\Admin\Question\Form as QuestionForm;
 use App\Livewire\Admin\Age\Index as AgeIndex;
@@ -32,6 +34,11 @@ Route::prefix('admin')->group(function () {
             auth()->logout();
             return redirect(route('login'));
         })->name('logout');
+
+        Route::prefix('respondent')->name('respondent.')->group(function () {
+            Route::get('', RespondentIndex::class)->name('index');
+            Route::get('detail/{respondentId?}', RespondentDetail::class)->name('detail');
+        });
 
         Route::prefix('question')->name('question.')->group(function () {
             Route::get('', QuestionIndex::class)->name('index');

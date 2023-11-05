@@ -12,6 +12,11 @@ class RespondentRepository
     ) {
     }
 
+    public function getRespondent(mixed $respondentId): ?Respondent
+    {
+        return $this->model->findOrFail($respondentId);
+    }
+
     public function getRespondents(): Collection
     {
         return $this->model->all();

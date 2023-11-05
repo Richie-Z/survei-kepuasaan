@@ -15,7 +15,7 @@ class SidebarMenu extends Component
         $this->items = [
             'Dashboard' => [
                 new Item('Dashboard', 'dashboard', 'fas fa-fire'),
-                new Item('Respons', 'dashboard', 'fas fa-users'),
+                new Item('Respons', 'respondent.index', 'fas fa-users'),
             ],
             'Master' => [
                 new Item('Pertanyaan', 'question.index', 'fas fa-question'),
