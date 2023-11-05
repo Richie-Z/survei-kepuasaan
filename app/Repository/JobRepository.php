@@ -12,6 +12,11 @@ class JobRepository
     ) {
     }
 
+    public function getJob(mixed $jobId): ?Job
+    {
+        return $this->model->findOrFail($jobId);
+    }
+
     public function getJobs(): Collection
     {
         return $this->model->all();

@@ -10,6 +10,8 @@ use App\Livewire\Admin\Age\Index as AgeIndex;
 use App\Livewire\Admin\Age\Form as AgeForm;
 use App\Livewire\Admin\Education\Index as EducationIndex;
 use App\Livewire\Admin\Education\Form as EducationForm;
+use App\Livewire\Admin\Job\Index as JobIndex;
+use App\Livewire\Admin\Job\Form as JobForm;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -42,6 +44,11 @@ Route::prefix('admin')->group(function () {
         Route::prefix('education')->name('education.')->group(function () {
             Route::get('', EducationIndex::class)->name('index');
             Route::get('form/{educationId?}', EducationForm::class)->name('form');
+        });
+
+        Route::prefix('job')->name('job.')->group(function () {
+            Route::get('', JobIndex::class)->name('index');
+            Route::get('form/{jobId?}', JobForm::class)->name('form');
         });
     });
 });
