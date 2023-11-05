@@ -10,4 +10,4 @@ composer;
 4. edit database di .env
 5. php artisan key:generate
 6. php artisan migrate --seed
-7. php artisan serve
+7. php artisan serve (default username: admin; password: admin)
