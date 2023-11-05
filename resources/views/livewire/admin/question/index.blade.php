@@ -23,7 +23,7 @@
                                     <tr>
                                         <td>{{ $key + 1 }}</td>
                                         <td>{{ $data->name }}</td>
-                                        <td>
+                                        <td class="align-middle">
                                             <a href="{{ route('question.form', ['questionId' => $data->id]) }}"
                                                 class="btn btn-secondary">Edit</a>
                                             <button wire:click="delete({{ $data->id }})"
