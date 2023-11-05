@@ -12,6 +12,11 @@ class ServiceTypeRepository
     ) {
     }
 
+    public function getServiceType(mixed $serviceTypeId): ?ServiceType
+    {
+        return $this->model->findOrFail($serviceTypeId);
+    }
+
     public function getServiceTypes(): Collection
     {
         return $this->model->all();

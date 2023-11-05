@@ -22,7 +22,7 @@ class SidebarMenu extends Component
                 new Item('Umur', 'age.index', 'fas fa-user'),
                 new Item('Pendidikan', 'education.index', 'fas fa-graduation-cap'),
                 new Item('Pekerjaan', 'job.index', 'fas fa-briefcase'),
-                new Item('Jenis Pelayanan', 'dashboard', 'fas fa-hospital'),
+                new Item('Jenis Pelayanan', 'service-type.index', 'fas fa-hospital'),
             ]
         ];
     }
