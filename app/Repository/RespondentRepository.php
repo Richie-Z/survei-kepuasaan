@@ -16,4 +16,9 @@ class RespondentRepository
     {
         return $this->model->all();
     }
+
+    public function addRespondent(array $data): Respondent
+    {
+        return Respondent::create($data);
+    }
 }
