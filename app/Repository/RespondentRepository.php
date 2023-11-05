@@ -3,6 +3,7 @@
 namespace App\Repository;
 
 use App\Models\Respondent;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Collection;
 
 class RespondentRepository
@@ -17,9 +18,13 @@ class RespondentRepository
         return $this->model->findOrFail($respondentId);
     }
 
-    public function getRespondents(): Collection
+    public function getRespondents(?Carbon $filter = null): Collection
     {
-        return $this->model->all();
+        $respondent = $this->model->query();
+        if (!empty($filter))
+            $respondent->whereMonth('created_at', $filter->month)->whereYear('created_at', $filter->year);
+
+        return $respondent->get();
     }
 
     public function addRespondent(array $data): Respondent

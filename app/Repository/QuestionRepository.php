@@ -12,7 +12,6 @@ class QuestionRepository
     ) {
     }
 
-
     public function getQuestion(mixed $questionId): ?Question
     {
         return $this->model->findOrFail($questionId);
